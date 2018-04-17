@@ -1,7 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 require('./services/passport');
+const keys = require('./config/keys');
 
 const app = express();
+mongoose
+  .connect(keys.mongoURI)
+  .then(() => console.log('Successfully connected to mongodb database.'))
+  .catch(err => console.log(err));
 
 require('./routes/authRoutes')(app);
 
