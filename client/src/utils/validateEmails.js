@@ -4,6 +4,7 @@ export default emails => {
   const invalidEmails = emails
     .split(',')
     .map(email => email.trim())
+    .filter(email => email !== '')
     .filter(email => !re.test(email));
 
   if (invalidEmails.length) {
